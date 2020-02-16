@@ -1,13 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e2cf7cf-0401-4f02-90e0-404c05fba0ec" name="Default Changelist" comment="" />
+    <list default="true" id="9e2cf7cf-0401-4f02-90e0-404c05fba0ec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Andrew_Aliokhin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Email.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pages/BasePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pages/MailPageYandex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/runner/TestRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/LoginServices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/MailServices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tests/MailTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sute.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1XWqj5bsEAg6rwJ5TSUmIkw8g7I" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -16,9 +52,100 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RunManager" selected="TestNG.MailTest">
+    <configuration name="TestRanner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.TestRanner" />
+      <module name="WD_Framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="runner.TestRunner" />
+      <module name="WD_Framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="runner.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MailTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="WD_Framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.MailTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MailTest.deleteEmailTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="WD_Framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.MailTest" />
+      <option name="METHOD_NAME" value="deleteEmailTest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MailTest.enterInvalidLogInTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="WD_Framework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.MailTest" />
+      <option name="METHOD_NAME" value="enterInvalidLogInTest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.MailTest" />
+        <item itemvalue="TestNG.MailTest.deleteEmailTest" />
+        <item itemvalue="Application.TestRunner" />
+        <item itemvalue="TestNG.MailTest.enterInvalidLogInTest" />
+        <item itemvalue="Application.TestRanner" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -34,9 +161,61 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="77" width="814" height="728" key="#Intentions" timestamp="1581764945301">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="361" y="77" width="814" height="728" key="#Intentions/0.0.1536.834@0.0.1536.834" timestamp="1581764945301" />
     <state x="361" y="77" key="#Project_Structure" timestamp="1581172356091">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="77" key="#Project_Structure/0.0.1536.834@0.0.1536.834" timestamp="1581172356091" />
+    <state x="100" y="100" width="1336" height="634" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1581854746872">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="100" y="100" width="1336" height="634" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.834@0.0.1536.834" timestamp="1581854746872" />
+    <state x="574" y="134" key="#com.intellij.ide.util.MemberChooser" timestamp="1581844228145">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="574" y="134" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1581844228145" />
+    <state x="205" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581506953403">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="205" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834@0.0.1536.834" timestamp="1581506953403" />
+    <state x="549" y="173" key="FileChooserDialogImpl" timestamp="1581682502527">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="549" y="173" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1581682502527" />
+    <state width="1478" height="270" key="GridCell.Tab.0.bottom" timestamp="1581868292882">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1478" height="270" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1581868292882" />
+    <state width="1478" height="270" key="GridCell.Tab.0.center" timestamp="1581868292882">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1478" height="270" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1581868292882" />
+    <state width="1478" height="270" key="GridCell.Tab.0.left" timestamp="1581868292881">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1478" height="270" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1581868292881" />
+    <state width="1478" height="270" key="GridCell.Tab.0.right" timestamp="1581868292882">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1478" height="270" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1581868292882" />
+    <state x="299" y="73" key="Maven.ArtifactSearchDialog" timestamp="1581765582047">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="299" y="73" key="Maven.ArtifactSearchDialog/0.0.1536.834@0.0.1536.834" timestamp="1581765582047" />
+    <state x="421" y="81" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1581784883456">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="421" y="81" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1581784883456" />
+    <state x="511" y="37" key="refactoring.ChangeSignatureDialog" timestamp="1581510098853">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="511" y="37" key="refactoring.ChangeSignatureDialog/0.0.1536.834@0.0.1536.834" timestamp="1581510098853" />
+    <state x="425" y="193" key="run.anything.popup" timestamp="1581839351444">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="425" y="193" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1581839351444" />
   </component>
 </project>
