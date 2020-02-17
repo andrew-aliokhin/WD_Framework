@@ -10,7 +10,7 @@ public class BasePage {
 
   public BasePage(WebDriver driver) {
     this.driver = driver;
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
     PageFactory.initElements(driver, this);
   }
 }

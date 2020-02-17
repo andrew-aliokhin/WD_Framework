@@ -31,13 +31,6 @@ public class MailPageYandex extends BasePage {
   private static final String ERROR_FIELD = "//*[@data-key=\"view=compose-field-to-error\"]";
   private static final String EMAIL_DONE_MASSAGE = "//*[@class=\"mail-Done-Title js-title-info\"]";
   private static final String SAVE_AND_LEAVE_BUTTON = "//span[text()=\"Сохранить и перейти\"]";
-  WebElement recipientField;
-  WebElement subjectInputField;
-  WebElement emailInputField;
-  WebElement sendEmailButton;
-  WebElement inboxButton;
-  WebElement sentButton;
-  WebElement lastEmailSubject;
 
   public MailPageYandex(WebDriver driver) {
     super(driver);
@@ -60,7 +53,7 @@ public class MailPageYandex extends BasePage {
   }
 
   public MailPageYandex clickDeleteButton() {
-    WebElement explicitWait = (new WebDriverWait(driver, 20))
+    WebElement explicitWait = (new WebDriverWait(driver, 10))
         .until(ExpectedConditions.presenceOfElementLocated(By.xpath(DELETE_BUTTON)));
     WebElement deleteButton = explicitWait.findElement(By.xpath(DELETE_BUTTON));
     deleteButton.click();
@@ -86,7 +79,7 @@ public class MailPageYandex extends BasePage {
   }
 
   public MailPageYandex clickSaveAndLeaveButton() {
-    WebElement explicitWait = (new WebDriverWait(driver, 20))
+    WebElement explicitWait = (new WebDriverWait(driver, 10))
         .until(ExpectedConditions.presenceOfElementLocated(By.xpath(SAVE_AND_LEAVE_BUTTON)));
     WebElement saveAndLeaveButton = explicitWait.findElement(By.xpath(SAVE_AND_LEAVE_BUTTON));
     saveAndLeaveButton.click();
@@ -94,7 +87,7 @@ public class MailPageYandex extends BasePage {
   }
 
   public MailPageYandex composeMail() {
-    WebElement explicitWait = (new WebDriverWait(driver, 20))
+    WebElement explicitWait = (new WebDriverWait(driver, 10))
         .until(ExpectedConditions.presenceOfElementLocated(By.xpath(COMPOSE_BUTTON)));
     WebElement composeButton = explicitWait.findElement(By.xpath(COMPOSE_BUTTON));
     composeButton.click();
@@ -102,42 +95,41 @@ public class MailPageYandex extends BasePage {
   }
 
   public MailPageYandex enterRecipient(Email email) {
-    WebElement explicitWait = (new WebDriverWait(driver, 20))
+    WebElement explicitWait = (new WebDriverWait(driver, 10))
         .until(ExpectedConditions.presenceOfElementLocated(By.xpath(RECIPIENT_FIELD)));
-    recipientField = explicitWait.findElement(By.xpath(RECIPIENT_FIELD));
+    WebElement recipientField = explicitWait.findElement(By.xpath(RECIPIENT_FIELD));
     recipientField.sendKeys(email.getRecipient().getFullName());
     return this;
   }
 
   public MailPageYandex enterSubject(Email email) {
-    subjectInputField = driver.findElement(By.xpath(SUBJECT_INPUT_FIELD));
+    WebElement subjectInputField = driver.findElement(By.xpath(SUBJECT_INPUT_FIELD));
     subjectInputField.sendKeys(email.getSubject());
     return this;
   }
 
   public MailPageYandex enterContent(Email email) {
-    emailInputField = driver.findElement(By.xpath(EMAIL_INPUT_FIELD));
+    WebElement emailInputField = driver.findElement(By.xpath(EMAIL_INPUT_FIELD));
     emailInputField.sendKeys(email.getContent());
     return this;
   }
 
   public MailPageYandex clickSendEmailButton() {
-    sendEmailButton = driver.findElement(By.xpath(SEND_EMAIL_BUTTON));
+    WebElement sendEmailButton = driver.findElement(By.xpath(SEND_EMAIL_BUTTON));
     sendEmailButton.click();
     return this;
-
   }
 
   public MailPageYandex clickInboxButton() {
     WebElement explicitWait = (new WebDriverWait(driver, 20))
         .until(ExpectedConditions.presenceOfElementLocated(By.xpath(EMAIL_DONE_MASSAGE)));
-    inboxButton = explicitWait.findElement(By.xpath(INBOX_BUTTON));
+    WebElement inboxButton = explicitWait.findElement(By.xpath(INBOX_BUTTON));
     inboxButton.click();
     return this;
   }
 
   public MailPageYandex clickSentButton() {
-    sentButton = driver.findElement(By.xpath(SENT_BUTTON));
+    WebElement sentButton = driver.findElement(By.xpath(SENT_BUTTON));
     sentButton.click();
     return this;
   }
@@ -147,15 +139,13 @@ public class MailPageYandex extends BasePage {
     Thread.sleep(2000);
     WebElement explicitWait = (new WebDriverWait(driver, 20))
         .until(ExpectedConditions.presenceOfElementLocated(By.xpath(LAST_EMAIL_SUBJECT)));
-    lastEmailSubject = explicitWait.findElement(By.xpath(LAST_EMAIL_SUBJECT));
+    WebElement lastEmailSubject = explicitWait.findElement(By.xpath(LAST_EMAIL_SUBJECT));
     return lastEmailSubject.getText();
-
   }
 
   public String getErrorMassage() {
     WebElement errorField = driver.findElement(By.xpath(ERROR_FIELD));
     return errorField.getText();
-
   }
 
   public String getUserName() {
