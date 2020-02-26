@@ -27,14 +27,13 @@
       <artifactId>selenium-java</artifactId>
       <version>3.141.59</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/ru.stqa.selenium/webdriver-factory -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>compile</scope>
+      <groupId>ru.stqa.selenium</groupId>
+      <artifactId>webdriver-factory</artifactId>
+      <version>4.4</version>
     </dependency>
   </dependencies>
-
 
   <groupId>org.example</groupId>
   <artifactId>WD_Framework</artifactId>

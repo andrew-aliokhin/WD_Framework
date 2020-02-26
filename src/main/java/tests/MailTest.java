@@ -1,98 +1,78 @@
 package tests;
 
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import static model.Letter.getCONTENT;
+import static model.Letter.getSUBJECT;
+import static model.User.getFullName;
+import static pages.MailPageYandex.getDefaultSubject;
+import static pages.MailPageYandex.getLetterErrorMassage;
+import static services.MailServices.deleteAllLetter;
+import static services.MailServices.deleteLetter;
+import static services.MailServices.fillInLetterFields;
+import static services.MailServices.getSubjectOfLastDraftLetter;
+import static services.MailServices.getSubjectOfLastInboxLetter;
+import static services.MailServices.getSubjectOfLastSentLetter;
+import static services.MailServices.getSubjectOfLastTrashLetter;
+import static services.MailServices.goToDrafts;
+import static services.MailServices.goToInbox;
+import static services.MailServices.sendLetter;
+
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.LoginPageYandex;
 import pages.MailPageYandex;
-import services.LoginServices;
-import services.MailServices;
 
 public class MailTest {
 
-  public static LoginPageYandex loginPageYandex;
-  public static MailPageYandex mailPageYandex;
-  private static WebDriver driver = null;
+  private static MailPageYandex mailPageYandex;
 
-  @BeforeClass
-  public void openBrowser() {
-    System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-    driver = new ChromeDriver();
-    loginPageYandex = new LoginPageYandex(driver);
+  public static MailPageYandex getMailPageYandex() {
+    return mailPageYandex;
   }
 
-  @AfterClass(enabled = false)
-  public void closeBrowser() {
-    driver.close();
-  }
-
-  @Test(priority = 0)
-  public void enterInvalidLogInTest() {
-    Assert.assertEquals(LoginServices.enterIncorrectLogin().getErrorMassage(),
-        LoginPageYandex.getLoginErrorMassage(),
-        "Testing of logging with invalid data is failed");
+  public static void setMailPageYandex(MailPageYandex mailPageYandex) {
+    MailTest.mailPageYandex = mailPageYandex;
   }
 
   @Test(priority = 1)
-  public void enterInvalidPasswordTest() {
-    Assert.assertEquals(LoginServices.enterIncorrectPassword().getErrorMassage(),
-        LoginPageYandex.getPasswordErrorMassage(),
-        "Testing of logging with invalid data is failed");
+  public void sendLetterTest() {
+    sendLetter(getFullName(), getSUBJECT(), getCONTENT());
+    Assert.assertEquals(getSubjectOfLastInboxLetter(),
+        getSubjectOfLastSentLetter(), "test is failed");
+    deleteAllLetter();
   }
 
-  @Test(priority = 2)
-  public void logInTest() {
-    Assert.assertEquals(LoginServices.LogIn().getUserName(), LoginServices.trueUser.getUserName(),
-        "Testing of logging is failed");
+  @Test(priority = 2, enabled = false)
+  public void sendLetterWithoutSubject() {
+    sendLetter(getFullName(), "", getCONTENT());
+    Assert.assertEquals(getSubjectOfLastInboxLetter(),
+        getDefaultSubject(), "test is failed");
+    getSubjectOfLastSentLetter();
   }
 
-  @Test(priority = 3)
-  public void sendEmailTest() throws InterruptedException {
-    Assert.assertEquals(
-        MailServices.sendEmail().clickInboxButton().clickRefreshButton().getLastEmailSubject(),
-        mailPageYandex.clickSentButton().clickRefreshButton().getLastEmailSubject(),
-        "Testing of sending email is failed");
+  @Test(priority = 3, enabled = false)
+  public void sendLetterWithoutRecipient() {
+    Assert.assertEquals(sendLetter("", getSUBJECT(), getCONTENT()).getErrorMassage(),
+        getLetterErrorMassage(), "test is failed");
+    goToInbox().clickSaveAndLeaveButton();
+    deleteAllLetter();
   }
 
-  @Test(priority = 4)
-  public void sendInvalidEmail() {
-    Assert.assertEquals(MailServices.sendInvalidEmail().getErrorMassage(),
-        MailPageYandex.getEmailErrorMassage(), "Testing of sending invalid email is failed");
+  @Test(priority = 4, enabled = false)
+  public void saveDraftTest() {
+    fillInLetterFields(getFullName(), getSUBJECT(), getCONTENT());
+    Assert.assertEquals(getSubjectOfLastDraftLetter(), getSUBJECT(), "test is failed");
   }
 
-  @Test(priority = 5)
-  public void sendEmailWithoutSubject() throws InterruptedException {
-    Assert.assertEquals(
-        MailServices.sendEmailWithoutSubject().clickInboxButton().clickRefreshButton()
-            .getLastEmailSubject(),
-        MailPageYandex.getDefaultSubject(), "Testing of sending email without subject is failed");
+  @Test(priority = 5, enabled = false)
+  public void saveLetterInTrashTest() {
+    goToDrafts();
+    deleteLetter();
+    Assert.assertEquals(getSubjectOfLastTrashLetter(), getSUBJECT(), "test is failed");
   }
 
-  @Test(priority = 6)
-  public void draftTest() throws InterruptedException {
-    Assert.assertEquals(
-        MailServices.createDraft().clickDraftButton().clickSaveAndLeaveButton().clickRefreshButton()
-            .getLastEmailSubject(),
-        MailServices.email.getSubject(), "Testing of save draft email is failed");
-  }
+  @Test(enabled = false)
+  public void deleteEmailTest() {
 
-  @Test(priority = 7)
-  public void trashTest() throws InterruptedException {
-    Assert.assertEquals(MailServices.createTrash().getLastEmailSubject(),
-        MailServices.email.getSubject(), "Testing of save trash email is failed");
   }
-
-  @Test(priority = 8)
-  public void deleteEmailTest() throws InterruptedException {
-    Assert.assertThrows(
-        TimeoutException.class,
-        () -> MailServices.deleteEmail().clickRefreshButton().getLastEmailSubject());
-  }
-
 
 }
 

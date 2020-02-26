@@ -1,35 +1,39 @@
 package pages;
 
-import model.Email;
+import static framework.Browser.clickElement;
+import static framework.Browser.fluentClickElement;
+import static framework.Browser.getTextFromElement;
+import static framework.Browser.sendKeysToElement;
+import static framework.Browser.waitElementToBeVisible;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import tests.MailTest;
 
 
 public class MailPageYandex extends BasePage {
 
-  private static final String EMAIL_ERROR_MASSAGE = "Поле не заполнено. Необходимо ввести адрес.";
+
+  private static final String LETTER_ERROR_MASSAGE = "Поле не заполнено. Необходимо ввести адрес.";
   private static final String DEFAULT_SUBJECT = "(Без темы)";
   private static final String PAGE_URL = "https://mail.yandex.by/";
   private static final String COMPOSE_BUTTON = "//*[@class=\"mail-ComposeButton js-main-action-compose\"]";
   private static final String REFRESH_BUTTON = "//*[@title=\"Проверить, есть ли новые письма (F9)\"]";
-  private static final String SEND_EMAIL_BUTTON = "//*[@class=\"mail-Compose-Field-Actions-Footer-Main\"]//span[text()=\"Отправить\"]";
+  private static final String SEND_LETTER_BUTTON = "//*[@class=\"mail-Compose-Field-Actions-Footer-Main\"]//span[text()=\"Отправить\"]";
   private static final String INBOX_BUTTON = "//*[@class=\"mail-Layout-Inner\"]//*[@href=\"#inbox\"]";
   private static final String SENT_BUTTON = "//*[@class=\"mail-Layout-Inner\"]//*[@href=\"#sent\"]";
   private static final String DELETE_BUTTON = "//*[@title=\"Удалить (Delete)\"]";
   private static final String USER_NAME_BUTTON = "//*[@class=\"mail-User-Name\"]";
   private static final String DRAFT_BUTTON = "//*[@class=\"mail-Layout-Inner\"]//*[@href=\"#draft\"]";
   private static final String TRASH_BUTTON = "//*[@class=\"mail-Layout-Inner\"]//*[@href=\"#trash\"]";
-  private static final String LAST_EMAIL_SUBJECT = "//*[@class=\"ns-view-container-desc mail-MessagesList js-messages-list\"]/div[1]//*[@class=\"mail-MessageSnippet-Item mail-MessageSnippet-Item_subject\"]/span";
-  private static final String LASE_EMAIL_FLAG = "//*[@class=\"ns-view-container-desc mail-MessagesList js-messages-list\"]/div[1]//*[@class=\"_nb-checkbox-flag _nb-checkbox-normal-flag\"]";
+  private static final String LAST_LETTER_SUBJECT = "//*[@class=\"ns-view-container-desc mail-MessagesList js-messages-list\"]/div[1]//*[@class=\"mail-MessageSnippet-Item mail-MessageSnippet-Item_subject\"]/span";
+  private static final String LAST_LETTER_FLAG = "//*[@class=\"ns-view-container-desc mail-MessagesList js-messages-list\"]/div[1]//*[@class=\"_nb-checkbox-flag _nb-checkbox-normal-flag\"]";
+  private static final String ALL_LETTER_FLAG = "//*[@id=\"nb-1\"]/body/div[2]/div[6]/div/div[3]/div[3]/div[2]/div[2]/div[2]/div/div[2]/div/div/div[1]/label/span";
   private static final String RECIPIENT_FIELD = "//*[@name=\"to\"]";
   private static final String SUBJECT_INPUT_FIELD = "//*[@class=\"mail-Compose-Field-Input-Controller js-compose-field js-editor-tabfocus-prev\"]";
-  private static final String EMAIL_INPUT_FIELD = "//*[@role=\"textbox\"]";
+  private static final String LETTER_INPUT_FIELD = "//*[@role=\"textbox\"]";
   private static final String ERROR_FIELD = "//*[@data-key=\"view=compose-field-to-error\"]";
-  private static final String EMAIL_DONE_MASSAGE = "//*[@class=\"mail-Done-Title js-title-info\"]";
+  private static final String LETTER_DONE_MASSAGE = "//*[@class=\"mail-Done-Title js-title-info\"]";
   private static final String SAVE_AND_LEAVE_BUTTON = "//span[text()=\"Сохранить и перейти\"]";
 
   public MailPageYandex(WebDriver driver) {
@@ -40,123 +44,93 @@ public class MailPageYandex extends BasePage {
     return DEFAULT_SUBJECT;
   }
 
-  public static String getEmailErrorMassage() {
-    return EMAIL_ERROR_MASSAGE;
+  public static String getLetterErrorMassage() {
+    return LETTER_ERROR_MASSAGE;
   }
 
-  public MailPageYandex clickRefreshButton() throws InterruptedException {
-    Thread.sleep(2000);
-    WebElement refreshButton = driver.findElement(By.xpath(REFRESH_BUTTON));
-    refreshButton.click();
-    Thread.sleep(2000);
+  public MailPageYandex clickRefreshButton() {
+    clickElement(REFRESH_BUTTON);
     return this;
   }
 
   public MailPageYandex clickDeleteButton() {
-    WebElement explicitWait = (new WebDriverWait(driver, 10))
-        .until(ExpectedConditions.presenceOfElementLocated(By.xpath(DELETE_BUTTON)));
-    WebElement deleteButton = explicitWait.findElement(By.xpath(DELETE_BUTTON));
-    deleteButton.click();
+    clickElement(DELETE_BUTTON);
     return this;
   }
 
   public MailPageYandex clickDraftButton() {
-    WebElement draftButton = driver.findElement(By.xpath(DRAFT_BUTTON));
-    draftButton.click();
+    clickElement(DRAFT_BUTTON);
     return this;
   }
 
   public MailPageYandex clickTrashButton() {
-    WebElement trashButton = driver.findElement(By.xpath(TRASH_BUTTON));
-    trashButton.click();
+    clickElement(TRASH_BUTTON);
     return this;
   }
 
-  public MailPageYandex clickLastEmailFlag() {
-    WebElement lastEmailFlag = driver.findElement(By.xpath(LASE_EMAIL_FLAG));
-    lastEmailFlag.click();
+  public MailPageYandex clickLastLetterFlag() {
+    clickElement(LAST_LETTER_FLAG);
+    return this;
+  }
+
+  public MailPageYandex clickAllLettersFlag() {
+    clickElement(ALL_LETTER_FLAG);
     return this;
   }
 
   public MailPageYandex clickSaveAndLeaveButton() {
-    WebElement explicitWait = (new WebDriverWait(driver, 10))
-        .until(ExpectedConditions.presenceOfElementLocated(By.xpath(SAVE_AND_LEAVE_BUTTON)));
-    WebElement saveAndLeaveButton = explicitWait.findElement(By.xpath(SAVE_AND_LEAVE_BUTTON));
-    saveAndLeaveButton.click();
-    return MailTest.mailPageYandex;
-  }
-
-  public MailPageYandex composeMail() {
-    WebElement explicitWait = (new WebDriverWait(driver, 10))
-        .until(ExpectedConditions.presenceOfElementLocated(By.xpath(COMPOSE_BUTTON)));
-    WebElement composeButton = explicitWait.findElement(By.xpath(COMPOSE_BUTTON));
-    composeButton.click();
+    clickElement(SAVE_AND_LEAVE_BUTTON);
     return this;
   }
 
-  public MailPageYandex enterRecipient(Email email) {
-    WebElement explicitWait = (new WebDriverWait(driver, 10))
-        .until(ExpectedConditions.presenceOfElementLocated(By.xpath(RECIPIENT_FIELD)));
-    WebElement recipientField = explicitWait.findElement(By.xpath(RECIPIENT_FIELD));
-    recipientField.sendKeys(email.getRecipient().getFullName());
+
+  public MailPageYandex clickComposeLetterButton() {
+    clickElement(COMPOSE_BUTTON);
     return this;
   }
 
-  public MailPageYandex enterSubject(Email email) {
-    WebElement subjectInputField = driver.findElement(By.xpath(SUBJECT_INPUT_FIELD));
-    subjectInputField.sendKeys(email.getSubject());
+  public MailPageYandex sendKeysToRecipientField(String recipient) {
+    sendKeysToElement(RECIPIENT_FIELD, recipient);
     return this;
   }
 
-  public MailPageYandex enterContent(Email email) {
-    WebElement emailInputField = driver.findElement(By.xpath(EMAIL_INPUT_FIELD));
-    emailInputField.sendKeys(email.getContent());
+  public MailPageYandex sendKeysToSubjectInputField(String subject) {
+    sendKeysToElement(SUBJECT_INPUT_FIELD, subject);
     return this;
   }
 
-  public MailPageYandex clickSendEmailButton() {
-    WebElement sendEmailButton = driver.findElement(By.xpath(SEND_EMAIL_BUTTON));
-    sendEmailButton.click();
+  public MailPageYandex sendKeysToLetterInputField(String content) {
+    sendKeysToElement(LETTER_INPUT_FIELD, content);
+    return this;
+  }
+
+  public MailPageYandex clickSendLetterButton() {
+    clickElement(SEND_LETTER_BUTTON);
     return this;
   }
 
   public MailPageYandex clickInboxButton() {
-    WebElement explicitWait = (new WebDriverWait(driver, 20))
-        .until(ExpectedConditions.presenceOfElementLocated(By.xpath(EMAIL_DONE_MASSAGE)));
-    WebElement inboxButton = explicitWait.findElement(By.xpath(INBOX_BUTTON));
+    WebElement inboxButton = waitElementToBeVisible(LETTER_DONE_MASSAGE)
+        .findElement(By.xpath(INBOX_BUTTON));
     inboxButton.click();
     return this;
   }
 
   public MailPageYandex clickSentButton() {
-    WebElement sentButton = driver.findElement(By.xpath(SENT_BUTTON));
-    sentButton.click();
+    fluentClickElement(SENT_BUTTON);
     return this;
   }
 
-
-  public String getLastEmailSubject() throws InterruptedException {
-    Thread.sleep(2000);
-    WebElement explicitWait = (new WebDriverWait(driver, 20))
-        .until(ExpectedConditions.presenceOfElementLocated(By.xpath(LAST_EMAIL_SUBJECT)));
-    WebElement lastEmailSubject = explicitWait.findElement(By.xpath(LAST_EMAIL_SUBJECT));
-    return lastEmailSubject.getText();
+  public String getLastLetterSubject() {
+    return getTextFromElement(LAST_LETTER_SUBJECT);
   }
 
   public String getErrorMassage() {
-    WebElement errorField = driver.findElement(By.xpath(ERROR_FIELD));
-    return errorField.getText();
+    return getTextFromElement(ERROR_FIELD);
   }
+
 
   public String getUserName() {
-    WebElement userNameButton = driver.findElement(By.xpath(USER_NAME_BUTTON));
-    return userNameButton.getText();
+    return getTextFromElement(USER_NAME_BUTTON);
   }
-
-  public MailPageYandex open() {
-    driver.get(PAGE_URL);
-    return this;
-  }
-
-
 }

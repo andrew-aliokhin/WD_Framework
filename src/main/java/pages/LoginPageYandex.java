@@ -1,12 +1,11 @@
 package pages;
 
-import model.User;
-import org.openqa.selenium.By;
+import static framework.Browser.clickElement;
+import static framework.Browser.getTextFromElement;
+import static framework.Browser.openTab;
+import static framework.Browser.sendKeysToElement;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class LoginPageYandex extends BasePage {
@@ -16,19 +15,13 @@ public class LoginPageYandex extends BasePage {
 
   private static final String PAGE_URL = "https://mail.yandex.by/";
   private static final String LOGIN_FIELD_LOCATOR = "//*[@id=\"passp-field-login\"]";
-  private static final String SIGN_IN_BUTTON_LOCATOR = "//*[@class=\"passp-button passp-sign-in-button\"]//*[@type=\"submit\"]";
+  private static final String SIGN_IN_BUTTON_LOCATOR =
+      "//*[@class=\"passp-button passp-sign-in-button\"]"
+          + "//*[@type=\"submit\"]";
   private static final String PASSWORD_FIELD_LOCATOR = "//*[@id=\"passp-field-passwd\"]";
   private static final String ENTER_BUTTON = "//*[@class=\"HeadBanner-ButtonsWrapper\"]//*[2]";
   private static final String ERROR_FIELD = "//*[@class=\"passp-form-field__error\"]";
 
-  @FindBy(xpath = LOGIN_FIELD_LOCATOR)
-  public WebElement loginField;
-
-  @FindBy(xpath = SIGN_IN_BUTTON_LOCATOR)
-  public WebElement signInButton;
-
-
-  WebElement passwordField;
 
   public LoginPageYandex(WebDriver driver) {
     super(driver);
@@ -43,57 +36,36 @@ public class LoginPageYandex extends BasePage {
   }
 
   public LoginPageYandex clickEnterButton() {
-    WebElement explicitWait = (new WebDriverWait(driver, 10))
-        .until(ExpectedConditions.presenceOfElementLocated(By.xpath(ENTER_BUTTON)));
-    WebElement interButton = explicitWait.findElement(By.xpath(ENTER_BUTTON));
-    interButton.click();
+    clickElement(ENTER_BUTTON);
     return this;
   }
 
-  public LoginPageYandex enterLogin(User user) {
-    loginField = driver.findElement(By.xpath(LOGIN_FIELD_LOCATOR));
-    loginField.sendKeys(user.getUserName());
+  public LoginPageYandex sendKeysToLogin(String login) {
+    sendKeysToElement(LOGIN_FIELD_LOCATOR, login);
     return this;
   }
 
   public LoginPageYandex clickSignInButton() {
-    signInButton = driver.findElement(By.xpath(SIGN_IN_BUTTON_LOCATOR));
-    signInButton.click();
+    clickElement(SIGN_IN_BUTTON_LOCATOR);
     return this;
   }
 
   public MailPageYandex openMailPageYandex() {
-
-    signInButton = driver.findElement(By.xpath(SIGN_IN_BUTTON_LOCATOR));
-    signInButton.click();
+    clickElement(SIGN_IN_BUTTON_LOCATOR);
     return new MailPageYandex(driver);
   }
 
-  public LoginPageYandex enterPassword(User user) {
-    passwordField = driver.findElement(By.xpath(PASSWORD_FIELD_LOCATOR));
-    passwordField.sendKeys(user.getPassword());
+  public LoginPageYandex sendKeysToPassword(String password) {
+    sendKeysToElement(PASSWORD_FIELD_LOCATOR, password);
     return this;
   }
 
   public String getErrorMassage() {
-    WebElement errorField = driver.findElement(By.xpath(ERROR_FIELD));
-    return errorField.getText();
+    return getTextFromElement(ERROR_FIELD);
   }
 
   public LoginPageYandex open() {
-    driver.get(PAGE_URL);
-    return this;
-  }
-
-  public LoginPageYandex clearLoginField() {
-    loginField.sendKeys("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"
-        + "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
-    return this;
-  }
-
-  public LoginPageYandex clearPasswordField() {
-    passwordField.sendKeys("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"
-        + "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
+    openTab(PAGE_URL);
     return this;
   }
 }

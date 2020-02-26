@@ -1,42 +1,77 @@
 package services;
 
-import model.Email;
+import static tests.MailTest.getMailPageYandex;
+
 import pages.MailPageYandex;
-import tests.MailTest;
 
 public class MailServices {
 
-  public static Email email = new Email(LoginServices.trueUser, "automationTest", "test");
 
-  public static MailPageYandex sendEmail() {
-    MailTest.mailPageYandex.composeMail().enterRecipient(email).enterContent(email)
-        .enterSubject(email).clickSendEmailButton();
-    return MailTest.mailPageYandex;
+  public static MailPageYandex deleteLetter() {
+    getMailPageYandex().clickLastLetterFlag().clickDeleteButton();
+    return getMailPageYandex();
   }
 
-  public static MailPageYandex sendInvalidEmail() {
-    MailTest.mailPageYandex.composeMail().enterContent(email).clickSendEmailButton();
-    return MailTest.mailPageYandex;
+  public static MailPageYandex deleteAllLetter() {
+    getMailPageYandex().clickAllLettersFlag().clickDeleteButton();
+    return getMailPageYandex();
   }
 
-  public static MailPageYandex sendEmailWithoutSubject() {
-    MailTest.mailPageYandex.enterRecipient(email).clickSendEmailButton();
-    return MailTest.mailPageYandex;
+  public static MailPageYandex deleteLettersAfterTest() {
+//    goToSent();
+    getMailPageYandex().clickRefreshButton();
+    deleteLetter();
+    return getMailPageYandex();
   }
 
-  public static MailPageYandex createDraft() {
-    MailTest.mailPageYandex.composeMail().enterContent(email).enterSubject(email);
-    return MailTest.mailPageYandex;
+  public static MailPageYandex sendLetter(String recipient, String subject, String content) {
+    fillInLetterFields(recipient, subject, content).clickSendLetterButton();
+    return getMailPageYandex();
   }
 
-  public static MailPageYandex createTrash() {
-    MailTest.mailPageYandex.clickLastEmailFlag().clickDeleteButton().clickTrashButton();
-    return MailTest.mailPageYandex;
+  public static MailPageYandex goToInbox() {
+    getMailPageYandex().clickInboxButton();
+    return getMailPageYandex();
   }
 
-  public static MailPageYandex deleteEmail() {
-    MailTest.mailPageYandex.clickLastEmailFlag().clickDeleteButton();
-    return MailTest.mailPageYandex;
+  public static MailPageYandex goToSent() {
+    getMailPageYandex().clickSentButton();
+    return getMailPageYandex();
+  }
+
+  public static MailPageYandex goToTrash() {
+    getMailPageYandex().clickTrashButton();
+    return getMailPageYandex();
+  }
+
+  public static MailPageYandex goToDrafts() {
+    getMailPageYandex().clickDraftButton();
+    return getMailPageYandex();
+  }
+
+  public static MailPageYandex fillInLetterFields(String recipient, String subject,
+      String content) {
+    getMailPageYandex().clickComposeLetterButton().sendKeysToRecipientField(recipient)
+        .sendKeysToSubjectInputField(subject).sendKeysToLetterInputField(content);
+    return getMailPageYandex();
+  }
+
+  public static String getSubjectOfLastSentLetter() {
+
+    return getMailPageYandex().clickSentButton().clickRefreshButton().getLastLetterSubject();
+  }
+
+  public static String getSubjectOfLastInboxLetter() {
+    return getMailPageYandex().clickInboxButton().clickRefreshButton()
+        .getLastLetterSubject();
+  }
+
+  public static String getSubjectOfLastDraftLetter() {
+    return getMailPageYandex().clickDraftButton().clickRefreshButton().getLastLetterSubject();
+  }
+
+  public static String getSubjectOfLastTrashLetter() {
+    return getMailPageYandex().clickTrashButton().clickRefreshButton().getLastLetterSubject();
   }
 
 

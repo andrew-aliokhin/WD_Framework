@@ -1,44 +1,31 @@
 package model;
 
 public class User {
-  private String userName;
-  private String password;
-  private String domainName;
-//  private  String TRUE_USER_NAME = "user.it.academy";
-//  private  String TRUE_PASSWORD = "it.academy.user";
-//  private  String FALSE_USER_NAME = "login";
-//  private  String FALSE_PASSWORD = "password";
 
-  public User(String userName, String password, String domainName) {
-    this.userName = userName;
-    this.password = password;
-    this.domainName=domainName;
+  private static final String USER_NAME = "user.it.academy";
+  private static final String PASSWORD = "it.academy.user";
+  private static final String DOMAIN_NAME = "@yandex.ru";
+
+  private static final String FALSE_USER_NAME = "invalidUserNameItAcademy";
+  private static final String FALSE_PASSWORD = "InvalidPassword";
+
+  public static String getUserName() {
+    return USER_NAME;
   }
 
-  public String getDomainName() {
-    return domainName;
+  public static String getPassword() {
+    return PASSWORD;
   }
 
-  public void setDomainName(String domainName) {
-    this.domainName = domainName;
+  public static String getFalseUserName() {
+    return FALSE_USER_NAME;
   }
 
-  public String getUserName() {
-    return userName;
+  public static String getFalsePassword() {
+    return FALSE_PASSWORD;
   }
 
-  public String getPassword() {
-    return password;
-  }
-
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-  public String getFullName(){
-    return userName+domainName;
+  public static String getFullName() {
+    return USER_NAME + DOMAIN_NAME;
   }
 }

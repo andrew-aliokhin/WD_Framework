@@ -8,7 +8,7 @@ public class TestRunner {
 
   public static void main(String[] args) {
     TestNG testNG = new TestNG();
-    List<String> file = Arrays.asList("src/main/resources/sute.xml");
+    List<String> file = Arrays.asList("src/main/resources/LoginSuite.xml");
     testNG.setTestSuites(file);
     testNG.run();
   }

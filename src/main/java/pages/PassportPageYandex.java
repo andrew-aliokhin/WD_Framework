@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -19,13 +18,5 @@ public class PassportPageYandex extends BasePage {
     super(driver);
   }
 
-  public MailPageYandex openMail() throws InterruptedException {
-    userAccountName = driver.findElement(By.xpath(USER_ACCOUNT_NAME));
-    Thread.sleep(4000);
-    userAccountName.click();
-    openMailButton = driver.findElement(By.xpath(OPEN_MAIL_BUTTON));
-    openMailButton.click();
-    return new MailPageYandex(driver);
-  }
 
 }

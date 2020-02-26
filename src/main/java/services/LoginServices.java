@@ -1,31 +1,37 @@
 package services;
 
-import model.User;
+import static tests.LogInTest.getLoginPageYandex;
+import static tests.MailTest.getMailPageYandex;
+import static tests.MailTest.setMailPageYandex;
+
+import framework.Browser;
 import pages.LoginPageYandex;
 import pages.MailPageYandex;
-import tests.MailTest;
+import tests.LogInTest;
 
 public class LoginServices {
 
-  public static User negativeUser = new User("incorrect.name.it.academy", "incorrect.password", "");
-  public static User trueUser = new User("user.it.academy", "it.academy.user", "@yandex.ru");
-
-  public static LoginPageYandex enterIncorrectLogin() {
-    MailTest.loginPageYandex = MailTest.loginPageYandex.open().clickEnterButton()
-        .enterLogin(LoginServices.negativeUser).
-            clickSignInButton().clearLoginField();
-    return MailTest.loginPageYandex;
+  public static LoginPageYandex openLoginPage() {
+    LogInTest.setLoginPageYandex(new LoginPageYandex(Browser.getDriver()));
+    LogInTest.getLoginPageYandex().open().clickEnterButton();
+    return getLoginPageYandex();
   }
 
-  public static LoginPageYandex enterIncorrectPassword() {
-    MailTest.loginPageYandex = MailTest.loginPageYandex.enterLogin(trueUser).
-        clickSignInButton().enterPassword(negativeUser).clickSignInButton().clearPasswordField();
-    return MailTest.loginPageYandex;
+  public static LoginPageYandex enterLogin(String login) {
+    getLoginPageYandex().sendKeysToLogin(login).clickSignInButton();
+    return getLoginPageYandex();
   }
 
-  public static MailPageYandex LogIn() {
-    MailTest.mailPageYandex = MailTest.loginPageYandex.enterPassword(trueUser).openMailPageYandex();
-    return MailTest.mailPageYandex;
+  public static LoginPageYandex enterPassword(String password) {
+    getLoginPageYandex().sendKeysToPassword(password).openMailPageYandex();
+    return getLoginPageYandex();
+  }
+
+  public static MailPageYandex logIn(String login, String password) {
+    setMailPageYandex(new MailPageYandex(Browser.getDriver()));
+    enterLogin(login);
+    enterPassword(password);
+    return getMailPageYandex();
   }
 
 }
