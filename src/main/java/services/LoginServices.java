@@ -11,9 +11,10 @@ import tests.LogInTest;
 
 public class LoginServices {
 
-  public static void openLoginPage() {
+  public static LoginPageYandex openLoginPage() {
     LogInTest.setLoginPageYandex(new LoginPageYandex(Browser.getDriver()));
     LogInTest.getLoginPageYandex().open().clickEnterButton();
+    return getLoginPageYandex();
   }
 
   public static LoginPageYandex enterLogin(String login) {

@@ -1,18 +1,23 @@
 package framework;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Browser {
 
   private static Browser instance;
   private static WebDriver driver;
+
 
   private Browser() {
     System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
@@ -32,20 +37,19 @@ public class Browser {
     return driver;
   }
 
-  public static boolean isElementPresent(String locator) {
-    return getDriver().findElements(By.xpath(locator)).size() > 0;
+  public static void clickElement(String locator) {
+    WebElement element = fluentWaitElement(locator).findElement(By.xpath(locator));
+    element.click();
   }
 
-  public static void clickElement(String locator) {
-    try {
-      if (isElementPresent(locator)) {
-        getDriver().findElement(By.xpath(locator)).click();
-      }
-    } catch (StaleElementReferenceException e) {
-      if (isElementPresent(locator)) {
-        getDriver().findElement(By.xpath(locator)).click();
-      }
-    }
+  public static void fluentClickElement(String locator) {
+    WebElement element = fluentWaitElement(locator).findElement(By.xpath(locator));
+    element.click();
+  }
+
+  public static WebElement waitElementToBeClickable(String locator) {
+    return (new WebDriverWait(driver, 10))
+        .until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
   }
 
   public static void closeBrowser() {
@@ -59,17 +63,8 @@ public class Browser {
   }
 
   public static String getTextFromElement(String locator) {
-    String string = "";
-    try {
-      if (isElementPresent(locator)) {
-        string = getDriver().findElement(By.xpath(locator)).getText();
-      }
-    } catch (StaleElementReferenceException e) {
-      if (isElementPresent(locator)) {
-        string = getDriver().findElement(By.xpath(locator)).getText();
-      }
-    }
-    return string;
+    WebElement element = fluentWaitElement(locator);
+    return element.getText();
   }
 
   public static void openTab(String url) {
@@ -81,8 +76,18 @@ public class Browser {
   }
 
   public static WebElement waitElementToBeVisible(String locator) {
-    return new WebDriverWait(driver, 15)
+    return new WebDriverWait(driver, 10)
         .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
   }
+
+  public static WebElement fluentWaitElement(String locator) {
+    Wait wait = new FluentWait(getDriver()).withTimeout(Duration.ofSeconds(10)).
+        pollingEvery(Duration.ofMillis(50)).ignoring(StaleElementReferenceException.class);
+
+    WebElement foo = (WebElement) wait.until(
+        (Function<WebDriver, WebElement>) driver -> driver.findElement(By.xpath(locator)));
+    return foo;
+  }
+
 }
 

@@ -1,11 +1,11 @@
 package pages;
 
 import static framework.Browser.clickElement;
+import static framework.Browser.fluentClickElement;
 import static framework.Browser.getTextFromElement;
 import static framework.Browser.sendKeysToElement;
 import static framework.Browser.waitElementToBeVisible;
 
-import framework.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,10 +13,12 @@ import org.openqa.selenium.WebElement;
 
 public class MailPageYandex extends BasePage {
 
+
   private static final String LETTER_ERROR_MASSAGE = "Поле не заполнено. Необходимо ввести адрес.";
   private static final String DEFAULT_SUBJECT = "(Без темы)";
+  private static final String PAGE_URL = "https://mail.yandex.by/";
   private static final String COMPOSE_BUTTON = "//*[@class=\"mail-ComposeButton js-main-action-compose\"]";
-  private static final String REFRESH_BUTTON = "//*[@class=\"svgicon svgicon-mail--ComposeButton-Refresh\"]";
+  private static final String REFRESH_BUTTON = "//*[@title=\"Проверить, есть ли новые письма (F9)\"]";
   private static final String SEND_LETTER_BUTTON = "//*[@class=\"mail-Compose-Field-Actions-Footer-Main\"]//span[text()=\"Отправить\"]";
   private static final String INBOX_BUTTON = "//*[@class=\"mail-Layout-Inner\"]//*[@href=\"#inbox\"]";
   private static final String SENT_BUTTON = "//*[@class=\"mail-Layout-Inner\"]//*[@href=\"#sent\"]";
@@ -33,16 +35,9 @@ public class MailPageYandex extends BasePage {
   private static final String ERROR_FIELD = "//*[@data-key=\"view=compose-field-to-error\"]";
   private static final String LETTER_DONE_MASSAGE = "//*[@class=\"mail-Done-Title js-title-info\"]";
   private static final String SAVE_AND_LEAVE_BUTTON = "//span[text()=\"Сохранить и перейти\"]";
-  private static final String CLEAR_TRASH_BUTTON = "//*[@data-click-action=\"folder.clear\"]";
-  private static final String EMPTY_TRASH_BUTTON = "//*[@class=\"b-popup__box__content\"]//*/span[text()=\"Empty\"]";
-  private static final String EMPTY_MASSAGE = "//*[@class=\"b-messages__placeholder-item\"][1]";
 
   public MailPageYandex(WebDriver driver) {
     super(driver);
-  }
-
-  public static String getEmptyMassage() {
-    return EMPTY_MASSAGE;
   }
 
   public static String getDefaultSubject() {
@@ -54,14 +49,13 @@ public class MailPageYandex extends BasePage {
   }
 
   public MailPageYandex clickRefreshButton() {
-    WebElement refreshButton = waitElementToBeVisible(ALL_LETTER_FLAG)
-        .findElement(By.xpath(REFRESH_BUTTON));
-    refreshButton.click();
+    clickElement(REFRESH_BUTTON);
     return this;
   }
 
-  public void clickDeleteButton() {
+  public MailPageYandex clickDeleteButton() {
     clickElement(DELETE_BUTTON);
+    return this;
   }
 
   public MailPageYandex clickDraftButton() {
@@ -69,8 +63,9 @@ public class MailPageYandex extends BasePage {
     return this;
   }
 
-  public void clickTrashButton() {
+  public MailPageYandex clickTrashButton() {
     clickElement(TRASH_BUTTON);
+    return this;
   }
 
   public MailPageYandex clickLastLetterFlag() {
@@ -79,7 +74,6 @@ public class MailPageYandex extends BasePage {
   }
 
   public MailPageYandex clickAllLettersFlag() {
-    Browser.waitElementToBeVisible(LAST_LETTER_SUBJECT);
     clickElement(ALL_LETTER_FLAG);
     return this;
   }
@@ -89,15 +83,6 @@ public class MailPageYandex extends BasePage {
     return this;
   }
 
-  public MailPageYandex clickClearTrashButton() {
-    clickElement(CLEAR_TRASH_BUTTON);
-    return this;
-  }
-
-  public MailPageYandex clickEmptyTrashButton() {
-    clickElement(EMPTY_TRASH_BUTTON);
-    return this;
-  }
 
   public MailPageYandex clickComposeLetterButton() {
     clickElement(COMPOSE_BUTTON);
@@ -114,12 +99,14 @@ public class MailPageYandex extends BasePage {
     return this;
   }
 
-  public void sendKeysToLetterInputField(String content) {
+  public MailPageYandex sendKeysToLetterInputField(String content) {
     sendKeysToElement(LETTER_INPUT_FIELD, content);
+    return this;
   }
 
-  public void clickSendLetterButton() {
+  public MailPageYandex clickSendLetterButton() {
     clickElement(SEND_LETTER_BUTTON);
+    return this;
   }
 
   public MailPageYandex clickInboxButton() {
@@ -130,8 +117,7 @@ public class MailPageYandex extends BasePage {
   }
 
   public MailPageYandex clickSentButton() {
-    clickElement(SENT_BUTTON);
-
+    fluentClickElement(SENT_BUTTON);
     return this;
   }
 
@@ -142,6 +128,7 @@ public class MailPageYandex extends BasePage {
   public String getErrorMassage() {
     return getTextFromElement(ERROR_FIELD);
   }
+
 
   public String getUserName() {
     return getTextFromElement(USER_NAME_BUTTON);

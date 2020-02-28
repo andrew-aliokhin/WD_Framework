@@ -2,22 +2,25 @@ package services;
 
 import static tests.MailTest.getMailPageYandex;
 
-import framework.Browser;
 import pages.MailPageYandex;
 
 public class MailServices {
 
-  public static MailPageYandex deleteAllLetter() {
-    getMailPageYandex().clickAllLettersFlag().clickDeleteButton();
-    Browser.waitElementToBeVisible(MailPageYandex.getEmptyMassage());
+
+  public static MailPageYandex deleteLetter() {
+    getMailPageYandex().clickLastLetterFlag().clickDeleteButton();
     return getMailPageYandex();
   }
 
-  public static MailPageYandex deleteAllDrafts() {
-    goToDrafts();
-    getMailPageYandex().clickSaveAndLeaveButton().clickRefreshButton().clickAllLettersFlag()
-        .clickDeleteButton();
-    Browser.waitElementToBeVisible(MailPageYandex.getEmptyMassage());
+  public static MailPageYandex deleteAllLetter() {
+    getMailPageYandex().clickAllLettersFlag().clickDeleteButton();
+    return getMailPageYandex();
+  }
+
+  public static MailPageYandex deleteLettersAfterTest() {
+//    goToSent();
+    getMailPageYandex().clickRefreshButton();
+    deleteLetter();
     return getMailPageYandex();
   }
 
@@ -26,13 +29,23 @@ public class MailServices {
     return getMailPageYandex();
   }
 
+  public static MailPageYandex goToInbox() {
+    getMailPageYandex().clickInboxButton();
+    return getMailPageYandex();
+  }
+
   public static MailPageYandex goToSent() {
     getMailPageYandex().clickSentButton();
     return getMailPageYandex();
   }
 
+  public static MailPageYandex goToTrash() {
+    getMailPageYandex().clickTrashButton();
+    return getMailPageYandex();
+  }
+
   public static MailPageYandex goToDrafts() {
-    getMailPageYandex().clickDraftButton().clickSaveAndLeaveButton();
+    getMailPageYandex().clickDraftButton();
     return getMailPageYandex();
   }
 
@@ -44,6 +57,7 @@ public class MailServices {
   }
 
   public static String getSubjectOfLastSentLetter() {
+
     return getMailPageYandex().clickSentButton().clickRefreshButton().getLastLetterSubject();
   }
 
@@ -53,8 +67,12 @@ public class MailServices {
   }
 
   public static String getSubjectOfLastDraftLetter() {
-    goToDrafts();
-    return getMailPageYandex().clickSaveAndLeaveButton().clickRefreshButton()
-        .getLastLetterSubject();
+    return getMailPageYandex().clickDraftButton().clickRefreshButton().getLastLetterSubject();
   }
+
+  public static String getSubjectOfLastTrashLetter() {
+    return getMailPageYandex().clickTrashButton().clickRefreshButton().getLastLetterSubject();
+  }
+
+
 }
