@@ -7,12 +7,10 @@ import static framework.Browser.sendKeysToElement;
 
 import org.openqa.selenium.WebDriver;
 
-
 public class LoginPageYandex extends BasePage {
 
   private static final String LOGIN_ERROR_MASSAGE = "Такого аккаунта нет";
   private static final String PASSWORD_ERROR_MASSAGE = "Неверный пароль";
-
   private static final String PAGE_URL = "https://mail.yandex.by/";
   private static final String LOGIN_FIELD_LOCATOR = "//*[@id=\"passp-field-login\"]";
   private static final String SIGN_IN_BUTTON_LOCATOR =
@@ -21,7 +19,6 @@ public class LoginPageYandex extends BasePage {
   private static final String PASSWORD_FIELD_LOCATOR = "//*[@id=\"passp-field-passwd\"]";
   private static final String ENTER_BUTTON = "//*[@class=\"HeadBanner-ButtonsWrapper\"]//*[2]";
   private static final String ERROR_FIELD = "//*[@class=\"passp-form-field__error\"]";
-
 
   public LoginPageYandex(WebDriver driver) {
     super(driver);
@@ -35,9 +32,8 @@ public class LoginPageYandex extends BasePage {
     return PASSWORD_ERROR_MASSAGE;
   }
 
-  public LoginPageYandex clickEnterButton() {
+  public void clickEnterButton() {
     clickElement(ENTER_BUTTON);
-    return this;
   }
 
   public LoginPageYandex sendKeysToLogin(String login) {
@@ -45,14 +41,13 @@ public class LoginPageYandex extends BasePage {
     return this;
   }
 
-  public LoginPageYandex clickSignInButton() {
+  public void clickSignInButton() {
     clickElement(SIGN_IN_BUTTON_LOCATOR);
-    return this;
   }
 
-  public MailPageYandex openMailPageYandex() {
+  public void openMailPageYandex() {
     clickElement(SIGN_IN_BUTTON_LOCATOR);
-    return new MailPageYandex(driver);
+    new MailPageYandex(driver);
   }
 
   public LoginPageYandex sendKeysToPassword(String password) {

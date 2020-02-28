@@ -2,36 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e2cf7cf-0401-4f02-90e0-404c05fba0ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/framework/Browser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tests/BaseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tests/LogInTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Letter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/TestRanner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/framework/Browser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/framework/Browser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Letter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Letter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/LoginPageYandex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/LoginPageYandex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/MailPageYandex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/MailPageYandex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PassportPageYandex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/PassportPageYandex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PassportPageYandex.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/runner/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runner/TestRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/LoginServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/LoginServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/MailServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/MailServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tests/MailTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tests/MailTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sute.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LoginSuite.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sute.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/Testing suite/Login tests.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/Testing suite/Login tests.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/Testing suite/Login tests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/Testing suite/Login tests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/Testing suite/Mail tests.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/Testing suite/Mail tests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/Testing suite/Mail tests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/Testing suite/Mail tests.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/Testing suite/testng-failed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/Testing suite/testng-failed.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/emailable-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/emailable-report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/junitreports/TEST-tests.LogInTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/junitreports/TEST-tests.LogInTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/junitreports/TEST-tests.MailTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/junitreports/TEST-tests.MailTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-output/old/Testing suite/Login tests.properties" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/Testing suite/Login tests.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/old/Testing suite/classes.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/Testing suite/classes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-output/old/Testing suite/groups.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/Testing suite/groups.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/old/Testing suite/methods-alphabetical.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/Testing suite/methods-alphabetical.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/old/Testing suite/methods-not-run.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/Testing suite/methods-not-run.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/old/Testing suite/methods.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/Testing suite/methods.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-output/old/Testing suite/testng.xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/Testing suite/testng.xml.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/old/Testing suite/toc.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/Testing suite/toc.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/old/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-output/testng-failed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/testng-failed.xml" afterDir="false" />
@@ -76,7 +69,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/framework" />
+    <property name="last_opened_file_path" value="D:/webDriverTestProject" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -202,34 +195,34 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="100" y="100" width="1336" height="634" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.834@0.0.1536.834" timestamp="1581854746872" />
-    <state x="574" y="134" key="#com.intellij.ide.util.MemberChooser" timestamp="1582726465343">
+    <state x="574" y="134" key="#com.intellij.ide.util.MemberChooser" timestamp="1582874550130">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="574" y="134" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1582726465343" />
+    <state x="574" y="134" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1582874550130" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1582185069828">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834@0.0.1536.834" timestamp="1582185069828" />
-    <state x="549" y="173" key="FileChooserDialogImpl" timestamp="1582117073676">
+    <state x="549" y="173" key="FileChooserDialogImpl" timestamp="1582820596591">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="549" y="173" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1582117073676" />
-    <state width="1493" height="291" key="GridCell.Tab.0.bottom" timestamp="1582731601547">
+    <state x="549" y="173" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1582820596591" />
+    <state width="1493" height="291" key="GridCell.Tab.0.bottom" timestamp="1582877448367">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="291" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1582731601547" />
-    <state width="1493" height="291" key="GridCell.Tab.0.center" timestamp="1582731601546">
+    <state width="1493" height="291" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1582877448367" />
+    <state width="1493" height="291" key="GridCell.Tab.0.center" timestamp="1582877448367">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="291" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1582731601546" />
-    <state width="1493" height="291" key="GridCell.Tab.0.left" timestamp="1582731601546">
+    <state width="1493" height="291" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1582877448367" />
+    <state width="1493" height="291" key="GridCell.Tab.0.left" timestamp="1582877448367">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="291" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1582731601546" />
-    <state width="1493" height="291" key="GridCell.Tab.0.right" timestamp="1582731601546">
+    <state width="1493" height="291" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1582877448367" />
+    <state width="1493" height="291" key="GridCell.Tab.0.right" timestamp="1582877448367">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="291" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1582731601546" />
+    <state width="1493" height="291" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1582877448367" />
     <state x="299" y="73" key="Maven.ArtifactSearchDialog" timestamp="1582106467365">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
